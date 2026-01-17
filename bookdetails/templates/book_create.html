@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{% if book %}Update{% else %}Create{% endif %} Book</h1>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    Title: <input type="text" name="title" value="{{ book.title|default_if_none:'' }}"><br>
+    Author: <input type="text" name="author" value="{{ book.author|default_if_none:'' }}"><br>
+    Description: <textarea name="description">{{ book.description|default_if_none:'' }}</textarea><br>
+    Image: <input type="file" name="image"><br>
+    <button type="submit">{% if book %}Update{% else %}Create{% endif %}</button>
+</form>
+{% endblock %}

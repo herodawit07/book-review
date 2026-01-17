@@ -1,0 +1,13 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<h1>Latest Books</h1>
+<ul>
+    {% for book in books %}
+    <li>
+        <a href="{% url 'book_detail' book.id %}">{{ book.title }}</a> by {{ book.author }}<br>
+        <img src="{{ book.image.url }}" width="100">
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

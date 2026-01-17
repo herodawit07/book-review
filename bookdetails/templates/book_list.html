@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Books List (CRUD)</h1>
+<a href="{% url 'book_create' %}">Create New Book</a>
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Actions</th>
+    </tr>
+    {% for book in books %}
+    <tr>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>
+            <a href="{% url 'book_update' book.id %}">Update</a> |
+            <a href="{% url 'book_delete' book.id %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
